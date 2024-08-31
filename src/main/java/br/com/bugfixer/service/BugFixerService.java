@@ -20,10 +20,9 @@ import java.util.List;
 @Service
 public class BugFixerService {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("apenAI.token")
+    @Value("${apenAI.token}")
     private String apiKey;
 
     public String attemptFix(String projectPath, String className, String methodName, String expectedBehavior, String path) {
